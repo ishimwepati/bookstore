@@ -1,0 +1,50 @@
+/* Create Book Form Styles */
+.create-book-form {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px;
+    margin: 20px auto; /* Center-align the form */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .create-book-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .create-book-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  .create-book-form .input-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .create-book-form .input-group label,
+  .create-book-form .input-group input {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .create-book-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .create-book-form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
