@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { books } from './components/bookData';
+import books from './components/bookData'; // Import 'books' from bookData
 import BookList from './components/BookList';
 import CreateBookForm from './components/CreateBookForm';
 import './HomePage.css';
@@ -13,8 +13,9 @@ function HomePage() {
   };
 
   const handleAddBook = (newBook) => {
-    newBook.id = bookList.length + 1;
-    setBookList([...bookList, newBook]);
+    const updatedBook = { ...newBook }; // Create a copy of newBook
+    updatedBook.id = bookList.length + 1; // Update the copy
+    setBookList([...bookList, updatedBook]); // Use the updated copy
   };
 
   return (
