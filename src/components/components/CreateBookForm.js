@@ -20,23 +20,23 @@ function CreateBookForm({ onAddBook }) {
   return (
     <form className="create-book-form" onSubmit={handleSubmit}>
       <div className="input-group">
-        <label htmlFor="title">Title:</label>
         <input
           type="text"
-          id="title" // Make sure this matches the 'htmlFor' attribute
+          id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
+          aria-label="Title"
         />
       </div>
       <div className="input-group">
-        <label htmlFor="author">Author:</label>
         <input
           type="text"
-          id="author" // Make sure this matches the 'htmlFor' attribute
+          id="author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
           required
+          aria-label="Author"
         />
       </div>
       <button type="submit">Add Book</button>
