@@ -9,7 +9,10 @@ function IndividualBook({ book, onDelete }) {
   return (
     <div className="individual-book">
       <h2>{book.title}</h2>
-      <p>Author: {book.author}</p>
+      <p>
+        Author:
+        {book.author}
+      </p>
       <button className="delete-button" onClick={handleDeleteClick}>
         Delete
       </button>
@@ -18,7 +21,7 @@ function IndividualBook({ book, onDelete }) {
 }
 
 IndividualBook.propTypes = {
-  book: PropTypes.object.isRequired, 
+  book: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 

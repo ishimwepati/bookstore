@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { books } from './components/bookData';
 import BookList from './components/BookList';
 import CreateBookForm from './components/CreateBookForm';
-import './HomePage.css'; 
+import './HomePage.css';
 
 function HomePage() {
   const [bookList, setBookList] = useState(books);
@@ -20,7 +20,9 @@ function HomePage() {
   return (
     <div>
       <h1>Waza BookStore</h1>
-      <BookList books={bookList} onDelete={handleDeleteBook} /> {/* Pass onDelete prop */}
+      <BookList books={bookList} onDelete={handleDeleteBook} />
+      {' '}
+      {/* Pass onDelete prop */}
       <CreateBookForm onAddBook={handleAddBook} />
     </div>
   );
