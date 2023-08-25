@@ -22,7 +22,6 @@ BookList.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
-    // Add more specific PropTypes for other properties if needed
   })).isRequired,
   onDelete: PropTypes.func.isRequired,
 };
