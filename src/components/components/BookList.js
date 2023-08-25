@@ -4,10 +4,14 @@ import './BookList.css'; // Import the CSS file
 
 function BookList({ books, onDelete }) {
   return (
-    <div className="book-list">
-      {books.map((book) => (
-        <IndividualBook key={book.id} book={book} onDelete={onDelete} />
-      ))}
+    <div className="book-list-container">
+      <div className="book-list">
+        {books.map((book) => (
+          <div key={book.id}>
+            <IndividualBook book={book} onDelete={onDelete} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

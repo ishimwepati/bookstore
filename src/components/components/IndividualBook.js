@@ -1,4 +1,5 @@
 import React from 'react';
+import './BookList.css'; // Import the CSS file
 
 function IndividualBook({ book, onDelete }) {
   return (
