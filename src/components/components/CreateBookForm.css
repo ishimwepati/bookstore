@@ -1,11 +1,10 @@
-/* Create Book Form Styles */
 .create-book-form {
     background-color: #f5f5f5;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
     width: 300px;
-    margin: 20px auto; /* Center-align the form */
+    margin: 20px auto; 
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   

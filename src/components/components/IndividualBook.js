@@ -1,17 +1,25 @@
 import React from 'react';
-import './BookList.css'; // Import the CSS file
+import PropTypes from 'prop-types';
 
 function IndividualBook({ book, onDelete }) {
+  const handleDeleteClick = () => {
+    onDelete(book.id);
+  };
+
   return (
     <div className="individual-book">
       <h2>{book.title}</h2>
       <p>Author: {book.author}</p>
-      {/* Add more book details */}
-      <button className="delete-button" onClick={() => onDelete(book.id)}>
+      <button className="delete-button" onClick={handleDeleteClick}>
         Delete
       </button>
     </div>
   );
 }
+
+IndividualBook.propTypes = {
+  book: PropTypes.object.isRequired, 
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default IndividualBook;

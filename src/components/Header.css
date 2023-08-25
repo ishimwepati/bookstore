@@ -1,39 +1,37 @@
-/* Header Styles */
 .header {
-    background-color: #343a40; /* Dark background color */
-    color: #fff; /* Text color */
-    padding: 10px 0; /* Add some padding for spacing */
-    text-align: center; /* Center-align text */
+    background-color: #343a40; 
+    color: #fff; 
+    padding: 10px 0; 
+    text-align: center; 
   }
   
   .header h1 {
-    margin: 0; /* Remove margin for the h1 element */
-    font-size: 36px; /* Adjust font size */
+    margin: 0; 
+    font-size: 36px;
   }
   
   .header nav ul {
-    list-style: none; /* Remove list bullets */
-    padding: 0; /* Remove default list padding */
+    list-style: none; 
+    padding: 0; 
   }
   
   .header nav ul li {
-    display: inline; /* Display list items horizontally */
-    margin-right: 20px; /* Add spacing between list items */
+    display: inline; 
+    margin-right: 20px; 
   }
   
   .header nav ul li:last-child {
-    margin-right: 0; /* Remove margin for the last list item */
+    margin-right: 0; 
   }
   
-  /* Header Link Styles */
   .header a {
-    text-decoration: none; /* Remove underline from links */
-    color: #fff; /* Text color for links */
-    font-weight: bold; /* Make links bold */
-    transition: color 0.3s; /* Smooth color transition on hover */
+    text-decoration: none; 
+    color: #fff;
+    font-weight: bold; 
+    transition: color 0.3s; 
   }
   
   .header a:hover {
-    color: #17a2b8; /* Change link color on hover */
+    color: #17a2b8;
   }
   

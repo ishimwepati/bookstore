@@ -31,15 +31,12 @@
   .delete-button:hover {
     background-color: #c82333;
   }
-  
-  /* BookList Container Styles */
   .book-list-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  /* BookList Styles */
   .book-list {
     width: 100%;
     max-width: 600px;

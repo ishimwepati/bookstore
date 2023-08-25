@@ -1,6 +1,6 @@
 import React from 'react';
 import IndividualBook from './IndividualBook';
-import './BookList.css'; // Import the CSS file
+import './BookList.css';
 
 function BookList({ books, onDelete }) {
   return (

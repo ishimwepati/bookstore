@@ -1,16 +1,13 @@
-// bookData.js
 export const books = [
     {
       id: 1,
-      title: "Book 1",
-      author: "Author 1",
-      // Add more book details as needed
+      title: "How to be come rich",
+      author: "Waza",
     },
     {
       id: 2,
-      title: "Book 2",
-      author: "Author 2",
+      title: "Love eachother",
+      author: "Ben",
     },
-    // Add more book objects
   ];
   
