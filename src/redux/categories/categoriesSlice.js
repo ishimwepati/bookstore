@@ -1,13 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  categories: [], // Initial state as an empty array
+};
+
 const categoriesSlice = createSlice({
   name: 'categories',
-  initialState: [],
+  initialState,
   reducers: {
-    // Reducer functions here
+    // Define any reducer actions for categories here
+    // In your case, you mentioned checking status and returning "Under construction"
+    checkStatus: (state) => {
+      // Set the categories array to ["Under construction"]
+      state.categories = ['Under construction'];
+    },
   },
 });
 
-export const { /* specify the properties you want to destructure */ } = categoriesSlice.actions;
+// Export the actions
+export const { checkStatus } = categoriesSlice.actions;
 
+// Export the reducer
 export default categoriesSlice.reducer;
