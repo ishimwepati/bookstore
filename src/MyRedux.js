@@ -10,9 +10,9 @@ function MyRedux() {
   const handleAddBook = () => {
     const newBook = {
       item_id: 'item4',
-      title: 'New Book',
-      author: 'Author Name',
-      category: 'Fiction',
+      title: 'Learn at Microverse',
+      author: ' WazaCode',
+      category: 'Programming',
     };
     dispatch(addBook(newBook));
   };
@@ -22,19 +22,31 @@ function MyRedux() {
   };
 
   return (
-    <div>
-      <button type="button" onClick={handleAddBook}>Add Book</button>
-      <ul>
+    <div className="container">
+      <ul className="book-list">
         {books.map((book) => (
-          <li key={book.item_id}>
+          <li key={book.item_id} className="book-item">
             {book.title}
             {' '}
             by
             {book.author}
-            <button type="button" onClick={() => handleRemoveBook(book.item_id)}>Remove Book</button>
+            <button
+              type="button"
+              className="remove-button"
+              onClick={() => handleRemoveBook(book.item_id)}
+            >
+              Remove Book
+            </button>
           </li>
         ))}
       </ul>
+      <button
+        type="button"
+        className="add-button"
+        onClick={handleAddBook}
+      >
+        Add Book
+      </button>
     </div>
   );
 }

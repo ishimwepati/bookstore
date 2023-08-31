@@ -1,4 +1,3 @@
-// booksSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = [
@@ -27,7 +26,7 @@ const booksSlice = createSlice({
   initialState,
   reducers: {
     addBook: (state, action) => {
-      state.push(action.payload); // Add a new book to the state
+      state.push(action.payload);
     },
     removeBook: (state, action) => state.filter((book) => book.item_id !== action.payload),
   },
