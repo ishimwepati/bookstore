@@ -1,0 +1,62 @@
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Book list styles */
+  .book-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .book-list li {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Button styles */
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Add and Remove button styles */
+  .add-button {
+    background-color: #28a745;
+  }
+  
+  .remove-button {
+    background-color: #dc3545;
+  }
+  
+  .add-button:hover {
+    background-color: #1e7e34;
+  }
+  
+  .remove-button:hover {
+    background-color: #c82333;
+  }
+  

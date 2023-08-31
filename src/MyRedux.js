@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addBook, removeBook } from './redux/books/booksSlice';
+import './MyRedux.css';
 
 function MyRedux() {
   const books = useSelector((state) => state.books);
@@ -30,7 +31,7 @@ function MyRedux() {
             {' '}
             by
             {book.author}
-            <button type="button" onClick={() => handleRemoveBook(book.item_id)}>Remove</button>
+            <button type="button" onClick={() => handleRemoveBook(book.item_id)}>Remove Book</button>
           </li>
         ))}
       </ul>
