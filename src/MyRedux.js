@@ -6,6 +6,7 @@ import './MyRedux.css';
 function MyRedux() {
   const books = useSelector((state) => state.books.books);
   const status = useSelector((state) => state.books.status);
+  const error = useSelector((state) => state.books.error); // Define the error variable
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function MyRedux() {
       {status === 'failed' && (
       <div>
         Error:
-        {status.error}
+        {error}
         {' '}
         {/* Display the error message */}
       </div>
