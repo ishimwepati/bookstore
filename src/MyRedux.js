@@ -1,50 +1,63 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addBook, removeBook } from './redux/books/booksSlice';
+import { fetchBooks, addBookAsync, removeBookAsync } from './redux/books/booksSlice';
 import './MyRedux.css';
 
 function MyRedux() {
-  const books = useSelector((state) => state.books);
+  const books = useSelector((state) => state.books.books);
+  const status = useSelector((state) => state.books.status);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchBooks());
+    }
+  }, [status, dispatch]);
 
   const handleAddBook = () => {
     const newBook = {
-      item_id: 'item4',
       title: 'Learn at Microverse',
-      author: ' WazaCode',
+      author: 'WazaCode',
       category: 'Programming',
     };
-    dispatch(addBook(newBook));
+    dispatch(addBookAsync(newBook));
   };
 
   const handleRemoveBook = (itemId) => {
-    dispatch(removeBook(itemId));
+    dispatch(removeBookAsync(itemId));
   };
 
   return (
     <div className="container">
-      <ul className="book-list">
-        {books.map((book) => (
-          <li key={book.item_id} className="book-item">
-            {book.title}
-            {' '}
-            by
-            {book.author}
-            <button
-              type="button"
-              className="remove-button"
-              onClick={() => handleRemoveBook(book.item_id)}
-            >
-              Remove Book
-            </button>
-          </li>
-        ))}
-      </ul>
-      <button
-        type="button"
-        className="add-button"
-        onClick={handleAddBook}
-      >
+      {status === 'loading' && <div>Loading...</div>}
+      {status === 'failed' && (
+      <div>
+        Error:
+        {status.error}
+        {' '}
+        {/* Display the error message */}
+      </div>
+      )}
+      {status === 'succeeded' && (
+        <ul className="book-list">
+          {books.map((book) => (
+            <li key={book.item_id} className="book-item">
+              {book.title}
+              {' '}
+              by
+              {book.author}
+              <button
+                type="button"
+                className="remove-button"
+                onClick={() => handleRemoveBook(book.item_id)}
+              >
+                Remove Book
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <button type="button" className="add-button" onClick={handleAddBook}>
         Add Book
       </button>
     </div>
