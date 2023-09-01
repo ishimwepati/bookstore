@@ -34,13 +34,14 @@ https://github.com/ishimwepati/bookstore.git
 <!-- INTRO -->
 # 📖 LeaderBoard <a name="about-project"></a>
 
-> This is a Bookstore project built React JS.
+> This is a Bookstore project built React JS and Redux.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 1. React JS
 2. Linters
 3. CSS
+4. Redux
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -100,6 +101,7 @@ Now in your termonal do this :
 > - First : "npm install" : to install all npm dependencies
 > - Then type "npm run build"
 > - npm install react-router-dom
+> - npm install @reduxjs/toolkit react-redux
 
 ### Usage
 
