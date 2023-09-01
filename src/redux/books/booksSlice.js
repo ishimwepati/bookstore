@@ -1,34 +1,41 @@
-import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// Define your initial state
 const initialState = {
   books: [],
   status: 'idle',
   error: null,
 };
 
+// Define your async thunks
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  const response = await axios.get(
-    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/XVbOtluLv7pP0Jpdince/books',
-  );
-  return response.data;
+  // Your async logic for fetching books should go here
+  const response = await fetch('your-api-endpoint');
+  const data = await response.json();
+  return data; // This is what will be available as action.payload in your reducers
 });
 
-export const addBookAsync = createAsyncThunk('books/addBook', async (newBook) => {
-  const response = await axios.post(
-    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/XVbOtluLv7pP0Jpdince/books',
-    newBook,
-  );
-  return response.data;
+export const addBookAsync = createAsyncThunk('books/addBookAsync', async (bookData) => {
+  // Your async logic for adding a book should go here
+  await fetch('your-api-endpoint', {
+    method: 'POST',
+    body: JSON.stringify(bookData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  return bookData;
 });
 
-export const removeBookAsync = createAsyncThunk('books/removeBook', async (itemId) => {
-  await axios.delete(
-    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/XVbOtluLv7pP0Jpdince/books/${itemId}`,
-  );
-  return itemId;
+export const removeBookAsync = createAsyncThunk('books/removeBookAsync', async (bookId) => {
+  // Your async logic for removing a book should go here
+  await fetch(`your-api-endpoint/${bookId}`, {
+    method: 'DELETE',
+  });
+  return bookId;
 });
 
+// Create a slice
 const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -55,4 +62,5 @@ const booksSlice = createSlice({
   },
 });
 
+export const { reducer } = booksSlice;
 export default booksSlice.reducer;

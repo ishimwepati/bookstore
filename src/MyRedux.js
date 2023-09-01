@@ -1,45 +1,40 @@
-import React, { useEffect } from 'react';
+// Update import paths in MyRedux.js
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBooks, addBookAsync, removeBookAsync } from './redux/books/booksSlice';
-import './MyRedux.css';
+import React, { useEffect } from 'react';
+import { fetchBooks, removeBookAsync } from './redux/books/booksSlice'; // Ensure the path is correct
 
 function MyRedux() {
-  const books = useSelector((state) => state.books.books);
-  const status = useSelector((state) => state.books.status);
-  const error = useSelector((state) => state.books.error); // Define the error variable
   const dispatch = useDispatch();
+  const books = useSelector((state) => state.books);
+  const status = useSelector((state) => state.status);
+  const error = useSelector((state) => state.error);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchBooks());
-    }
-  }, [status, dispatch]);
-
-  const handleAddBook = () => {
-    const newBook = {
-      title: 'Learn at Microverse',
-      author: 'WazaCode',
-      category: 'Programming',
-    };
-    dispatch(addBookAsync(newBook));
-  };
+    // Fetch books when the component mounts
+    dispatch(fetchBooks());
+  }, [dispatch]);
 
   const handleRemoveBook = (itemId) => {
+    // Dispatch the removeBookAsync action when a book is removed
     dispatch(removeBookAsync(itemId));
   };
 
-  return (
-    <div className="container">
-      {status === 'loading' && <div>Loading...</div>}
-      {status === 'failed' && (
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'failed') {
+    return (
       <div>
         Error:
         {error}
-        {' '}
-        {/* Display the error message */}
       </div>
-      )}
-      {status === 'succeeded' && (
+    );
+  }
+
+  return (
+    <div>
+      {status === 'succeeded' && books.length > 0 ? (
         <ul className="book-list">
           {books.map((book) => (
             <li key={book.item_id} className="book-item">
@@ -57,10 +52,9 @@ function MyRedux() {
             </li>
           ))}
         </ul>
+      ) : (
+        <div>No books available.</div>
       )}
-      <button type="button" className="add-button" onClick={handleAddBook}>
-        Add Book
-      </button>
     </div>
   );
 }
