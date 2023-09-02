@@ -20,7 +20,6 @@ p {
   padding: 0;
 }
 
-/* Basic styling for the app */
 body {
   font-family: Arial, sans-serif;
   background-color: #f5f6fa;
@@ -89,7 +88,7 @@ body {
 
 .progress-bar {
   display: flex;
-  width: 40%;
+  width: 30%;
   justify-content: right;
   margin-top: auto;
   margin-bottom: auto;
@@ -134,7 +133,7 @@ body {
   height: 100%;
   border-radius: 50%;
   background: conic-gradient(rgb(61, 126, 201) 0% 64%, transparent 64% 100%);
-  transform: rotate(-360deg); /* Rotate the gradient to start from the top */
+  transform: rotate(-360deg);
 }
 
 .chapter-info {
