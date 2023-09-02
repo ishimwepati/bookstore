@@ -9,16 +9,18 @@ p {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #232020;
   color: #333;
+  margin-top: 4%;
 }
 
 .page {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .page-nav {
@@ -45,7 +47,7 @@ body {
 
 .navigation a {
   text-decoration: none;
-  color: #007bff;
+  color: hsl(0, 0%, 1%);
 }
 
 .book {
@@ -77,7 +79,7 @@ body {
 }
 
 .book button {
-  background-color: #007bff;
+  background-color: #e94f4f;
   color: #fff;
   border: none;
   padding: 5px 10px;

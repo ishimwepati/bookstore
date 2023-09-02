@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { addBook } from '../redux/books/booksSlice';
 import '../App.css';
 
@@ -33,7 +33,7 @@ const BookActions = () => {
   };
 
   const categories = [
-    'Action', 'Fiction', 'Thriller', 'Mystery', 'Adventure', 'Biography', 'Anthology', 'Other',
+    'Programming', 'Cinematic', 'Geographic', 'Thriller', 'Mystery', 'Adventure', 'Other',
   ];
 
   return (
