@@ -42,6 +42,7 @@ https://github.com/ishimwepati/bookstore.git
 2. Linters
 3. CSS
 4. Redux
+5. API
 
 ### Tech Stack <a name="tech-stack"></a>
 
@@ -64,7 +65,6 @@ https://github.com/ishimwepati/bookstore.git
 > - Beautiful design added
 > - Add a Book
 > - Delete a book
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
