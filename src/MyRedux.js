@@ -1,4 +1,3 @@
-// Update import paths in MyRedux.js
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import { fetchBooks, removeBookAsync } from './redux/books/booksSlice'; // Ensure the path is correct

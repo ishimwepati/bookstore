@@ -1,22 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage';
-import CategoriesPage from './components/CategoriesPage';
-import Header from './components/Header';
-import MyRedux from './MyRedux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import Categories from './components/Categories';
 
 function App() {
   return (
-    <Router>
-      <div className="body">
-        <Header />
-        <MyRedux />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/categories" element={<CategoriesPage />} />
-        </Routes>
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,42 +1,34 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-// Define your initial state
+const baseApiUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/FfsxRXd6weDBOx32orzJ/';
+const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
+  const response = await axios.get(`${baseApiUrl}books`);
+  return response.data;
+});
+
+const addBook = createAsyncThunk('books/addBook', async (book) => {
+  const response = await axios.post(`${baseApiUrl}books`, book);
+  return response.data === 'Created' ? book : null;
+});
+
+const removeBook = createAsyncThunk('books/removeBook', async (ITEM_ID) => {
+  const response = await axios.delete(`${baseApiUrl}books/${ITEM_ID}`);
+  return response.data === 'The book was deleted successfully!' ? ITEM_ID : null;
+});
+
+export const fetchInitialBooks = createAsyncThunk('books/fetchInitialBooks', async () => {
+  const response = await axios.get(`${baseApiUrl}books`);
+  return response.data;
+});
+
 const initialState = {
   books: [],
-  status: 'idle',
-  error: null,
+  error: '',
+  loading: 'idle',
 };
 
-// Define your async thunks
-export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  // Your async logic for fetching books should go here
-  const response = await fetch('your-api-endpoint');
-  const data = await response.json();
-  return data; // This is what will be available as action.payload in your reducers
-});
-
-export const addBookAsync = createAsyncThunk('books/addBookAsync', async (bookData) => {
-  // Your async logic for adding a book should go here
-  await fetch('your-api-endpoint', {
-    method: 'POST',
-    body: JSON.stringify(bookData),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  return bookData;
-});
-
-export const removeBookAsync = createAsyncThunk('books/removeBookAsync', async (bookId) => {
-  // Your async logic for removing a book should go here
-  await fetch(`your-api-endpoint/${bookId}`, {
-    method: 'DELETE',
-  });
-  return bookId;
-});
-
-// Create a slice
-const booksSlice = createSlice({
+export const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {},
@@ -47,20 +39,82 @@ const booksSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.books = action.payload;
+        if (action.payload !== '') {
+          const books = [];
+          const keys = Object.keys(action.payload);
+          keys.forEach((bookId) => {
+            books.push({ item_id: bookId, ...action.payload[bookId][0] });
+          });
+          state.books = books;
+          if (state.books.length === 0) state.error = 'No result was found!';
+        } else {
+          state.error = 'No result was found!';
+        }
       })
       .addCase(fetchBooks.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
+      });
+
+    builder
+      .addCase(addBook.pending, (state) => {
+        state.status = 'loading';
       })
-      .addCase(addBookAsync.fulfilled, (state, action) => {
-        state.books.push(action.payload);
+      .addCase(addBook.fulfilled, (state, action) => {
+        if (action.payload !== null) {
+          state.status = 'succeeded';
+          state.error = '';
+          state.books.push(action.payload);
+        } else {
+          state.status = 'failed';
+          state.error = 'Unable to add record!';
+        }
       })
-      .addCase(removeBookAsync.fulfilled, (state, action) => {
-        state.books = state.books.filter((book) => book.item_id !== action.payload);
+      .addCase(addBook.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(removeBook.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(removeBook.fulfilled, (state, action) => {
+        if (action.payload !== null) {
+          state.status = 'succeeded';
+          state.error = '';
+          state.books = state.books.filter((bookId) => bookId.item_id !== action.payload);
+          if (state.books.length === 0) state.error = 'No result was found!';
+        } else {
+          state.status = 'failed';
+          state.error = 'Unable to remove record!';
+        }
+      })
+      .addCase(removeBook.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(fetchInitialBooks.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchInitialBooks.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        const books = [];
+        const keys = Object.keys(action.payload);
+        keys.forEach((bookId) => {
+          books.push({ item_id: bookId, ...action.payload[bookId][0] });
+        });
+        state.books = books;
+        if (state.books.length === 0) state.error = 'No result was found!';
+      })
+      .addCase(fetchInitialBooks.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
       });
   },
 });
 
-export const { reducer } = booksSlice;
+export { addBook, fetchBooks, removeBook };
 export default booksSlice.reducer;
