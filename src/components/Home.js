@@ -5,8 +5,11 @@ import '../App.css';
 const Home = () => (
   <div className="page">
     <div className="page-nav">
-      <h2>WazaCode BookStore</h2>
+      <h2>Bookstore CMS</h2>
       <Navigation />
+      <div className="user">
+        <i className="fa-solid fa-user" />
+      </div>
     </div>
     <BookList />
   </div>
