@@ -51,7 +51,7 @@ const Book = (props) => {
           </div>
         </div>
         <div>
-          <h1>64%</h1>
+          <h1>63%</h1>
           <p>Completed</p>
         </div>
       </div>
